@@ -1,0 +1,8 @@
+_thumbs800
+template.html
+data.json
+._*
+.DS_Store
+.env*
+.vercel
+_stats.json

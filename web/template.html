@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>ONE SHOT 一镜</title>
+<meta name="description" content="__DESC__">
+<meta name="theme-color" content="#0d0a08">
+<link rel="canonical" href="__SITE__/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ONE SHOT 一镜">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:url" content="__SITE__/">
+<meta property="og:title" content="ONE SHOT 一镜 · 一句提示词 一镜到底">
+<meta property="og:description" content="__DESC__">
+<meta property="og:image" content="__SITE__/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ONE SHOT 一镜 Claude Opus 5.5 作品片单">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@sciencedegens">
+<meta name="twitter:creator" content="@sciencedegens">
+<meta name="twitter:title" content="ONE SHOT 一镜 · 一句提示词 一镜到底">
+<meta name="twitter:description" content="__DESC__">
+<meta name="twitter:image" content="__SITE__/og.jpg">
+<meta name="twitter:image:alt" content="ONE SHOT 一镜 Claude Opus 5.5 作品片单">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@600;900&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --stage:#0d0a08; --stage-2:#171210; --stage-3:#221a15; --line-d:#3a2f26;
+  --velvet:#6e0f14; --velvet-hi:#a3202a; --velvet-lo:#2a0406;
+  --gold:#d4b064; --gold-hi:#f6e0a0; --gold-lo:#7d5f28;
+  --cream:#f3ead8; --cream-2:#b9a98c; --cream-3:#7a6d5a;
+  --paper:#EFE3C9; --paper-2:#E2D1B0; --paper-3:#CDB58C;
+  --ink:#2A1C13; --ink-soft:#5B4331; --ink-faint:#8A735C;
+  --opus:#D8742B; --rec:#ff5b35; --stamp:#b3372a;
+  --display:"Cinzel","Noto Serif SC","Songti SC",serif;
+  --serif:"Fraunces","Noto Serif SC","Songti SC",Georgia,serif;
+  --cjk:"Noto Serif SC","Songti SC","STSong",serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .11 0 0 0 0 .07 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --fibre:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .06' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .12 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--stage);color:var(--cream);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:clamp(16px,3vw,40px)}
+.mono{font-family:var(--mono)}
+
+/* ---------- 舞台 ---------- */
+.stage{position:relative;overflow:hidden;background:
+  radial-gradient(ellipse 60% 70% at 50% 0%,rgba(246,224,160,.16),transparent 70%),
+  radial-gradient(ellipse 80% 50% at 50% 110%,rgba(110,15,20,.45),transparent 70%),var(--stage);
+  padding-block:clamp(64px,9vw,112px) 0;text-align:center;isolation:isolate}
+.valance{position:absolute;inset:0 0 auto 0;height:34px;z-index:3;
+  background:linear-gradient(180deg,var(--velvet-lo),var(--velvet) 60%,var(--velvet-hi));
+  -webkit-mask:radial-gradient(circle 23px at 23px -4px,#000 98%,transparent) 0 0/46px 34px repeat-x,linear-gradient(#000,#000) 0 0/100% 12px no-repeat;
+  mask:radial-gradient(circle 23px at 23px -4px,#000 98%,transparent) 0 0/46px 34px repeat-x,linear-gradient(#000,#000) 0 0/100% 12px no-repeat}
+.valance::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:var(--gold-lo)}
+.curtain{position:absolute;top:0;bottom:0;width:clamp(40px,11vw,176px);z-index:2;
+  background:repeating-linear-gradient(90deg,var(--velvet-lo) 0,var(--velvet) 11px,var(--velvet-hi) 20px,var(--velvet) 30px,var(--velvet-lo) 42px);
+  box-shadow:inset 0 -80px 80px rgba(0,0,0,.55);
+  animation:part 1.6s cubic-bezier(.6,.05,.25,1) both}
+.curtain.l{left:0;clip-path:polygon(0 0,100% 0,92% 38%,62% 64%,56% 100%,0 100%);transform-origin:left}
+.curtain.r{right:0;clip-path:polygon(0 0,100% 0,100% 100%,44% 100%,38% 64%,8% 38%);transform-origin:right}
+.curtain::after{content:"";position:absolute;left:0;right:0;top:61%;height:10px;background:linear-gradient(var(--gold-hi),var(--gold-lo));opacity:.9}
+@keyframes part{from{transform:scaleX(2.6)}to{transform:scaleX(1)}}
+.social{position:absolute;z-index:4;top:48px;right:calc(clamp(40px,11vw,176px) + 16px);display:flex;gap:8px}
+.social a{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border:1px solid var(--gold-lo);border-radius:999px;background:rgba(13,10,8,.55);color:var(--gold-hi);text-decoration:none;font:600 12px/1 var(--mono);letter-spacing:.04em;transition:border-color .15s ease,background .15s ease}
+.social a:hover{border-color:var(--gold-hi);background:rgba(212,176,100,.12)}
+.social svg{width:15px;height:15px;fill:currentColor;flex:none}
+.stage-inner{position:relative;z-index:1;padding-inline:clamp(56px,14vw,200px)}
+.eyebrow{font:600 12px/1.4 var(--display);letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+.eyebrow .dot{color:var(--velvet-hi);padding-inline:.5em}
+h1{margin:18px 0 0;line-height:.9}
+h1 .en{display:block;font:800 clamp(52px,11vw,150px)/.92 var(--display);letter-spacing:.06em;
+  background:linear-gradient(180deg,var(--gold-hi) 8%,var(--gold) 52%,var(--gold-lo) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 22px rgba(212,176,100,.18))}
+h1 .zh{display:block;margin-top:16px;font:900 clamp(34px,5.6vw,68px)/1.1 var(--cjk);letter-spacing:.24em;padding-left:.24em;color:var(--cream)}
+.rule-gold{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto 0;max-width:620px;color:var(--gold);font:600 11px/1 var(--display);letter-spacing:.3em}
+.rule-gold::before,.rule-gold::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-lo),var(--gold))}
+.rule-gold::after{transform:scaleX(-1)}
+.slogan{margin:22px auto 0;color:var(--cream);font:600 clamp(18px,2.2vw,24px)/1.5 var(--cjk);letter-spacing:.34em;padding-left:.34em}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(18px,5vw,64px);margin:40px 0 0;padding:0}
+.stat{display:grid;justify-items:center;gap:4px;list-style:none}
+.stat .wreath{display:flex;align-items:center;gap:2px}
+.stat svg{width:30px;height:64px;flex:none}
+.stat b{font:800 clamp(30px,4.4vw,46px)/1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums;min-width:2ch}
+.stat span{font:600 11px/1.3 var(--sans);letter-spacing:.2em;color:var(--cream-2)}
+.floor{position:relative;height:74px;margin-top:40px;background:
+  radial-gradient(ellipse 50% 100% at 50% 0%,rgba(163,32,42,.75),rgba(42,4,6,.9) 60%,transparent 75%)}
+.floor::before{content:"";position:absolute;left:8%;right:8%;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* ---------- 分类金条 ---------- */
+.tabs{background:linear-gradient(180deg,#120d0a,#0a0706);border-block:1px solid var(--gold-lo)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:none;display:flex;align-items:baseline;gap:8px;border:1px solid transparent;background:none;cursor:pointer;
+  padding:8px 14px;font:600 14px/1 var(--cjk);color:var(--cream-2);letter-spacing:.06em;border-radius:2px}
+.tab small{font:400 11px/1 var(--mono);color:var(--cream-3)}
+.tab:hover{color:var(--gold-hi)}
+.tab[aria-pressed="true"]{color:var(--stage);background:linear-gradient(180deg,var(--gold-hi),var(--gold));border-color:var(--gold-hi)}
+.tab[aria-pressed="true"] small{color:var(--velvet-lo)}
+
+/* ---------- 放映工具栏 ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(13,10,8,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d)}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.rec{display:inline-flex;align-items:center;gap:8px;font:600 11px/1 var(--mono);letter-spacing:.14em;color:var(--cream)}
+.rec i{width:8px;height:8px;border-radius:50%;background:var(--rec);box-shadow:0 0 10px var(--rec);animation:blink 1.4s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--stage-2);border:1px solid var(--line-d);border-radius:3px;padding:0 10px}
+.search:focus-within{border-color:var(--gold-lo)}
+.search input{flex:1;min-width:0;background:none;border:0;outline:0;padding:9px 0;font-size:14px}
+.search input::placeholder{color:var(--cream-3)}
+.search kbd{font:400 11px/1 var(--mono);color:var(--cream-3);border:1px solid var(--line-d);border-radius:3px;padding:3px 6px}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.sel{background:var(--stage-2);border:1px solid var(--line-d);border-radius:3px;padding:8px 10px;font-size:13px}
+.tog{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-d);background:var(--stage-2);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--cream-2)}
+.tog input{position:absolute;opacity:0;pointer-events:none}
+.tog::before{content:"";width:8px;height:8px;border-radius:50%;border:1px solid var(--cream-3)}
+.tog:has(input:checked){border-color:var(--opus);color:var(--cream)}
+.tog:has(input:checked)::before{background:var(--opus);border-color:var(--opus)}
+.tog:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:2px}
+.count{margin-left:auto;font:400 12px/1 var(--mono);color:var(--cream-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.count b{color:var(--gold-hi);font-weight:600}
+
+/* ---------- 纸质片单 ---------- */
+.paper{background:var(--grain),var(--fibre),var(--paper);color:var(--ink);padding-block:36px 64px;min-height:60vh}
+.sec-head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:6px 18px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.sec-head .no{font:600 12px/1 var(--mono);color:var(--ink-faint);letter-spacing:.1em;align-self:start;padding-top:8px}
+.sec-head h2{margin:0;font:900 clamp(28px,4vw,44px)/1.05 var(--cjk);letter-spacing:.02em;text-wrap:balance}
+.sec-head .n{font:700 clamp(22px,3vw,32px)/1 var(--serif);color:var(--opus);font-variant-numeric:tabular-nums}
+.sec-head p{grid-column:2/-1;margin:0;color:var(--ink-soft);font-size:14px;max-width:62ch}
+.subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.sub{border:1.5px solid var(--ink);background:transparent;border-radius:2px;padding:5px 10px;font:600 13px/1.2 var(--sans);cursor:pointer;color:var(--ink)}
+.sub small{font:400 11px var(--mono);color:var(--ink-faint);margin-left:4px}
+.sub[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.sub[aria-pressed="true"] small{color:var(--paper-3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,248px),1fr));gap:26px 20px;margin-top:26px}
+.card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);min-width:0}
+.cov{position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;border:2px solid var(--ink);background-color:var(--ink);
+  box-shadow:4px 4px 0 var(--paper-3);transition:transform .18s ease,box-shadow .18s ease}
+.card:hover .cov,.card:focus-visible .cov{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink-soft)}
+.card:focus-visible{outline:none}
+.card:focus-visible .cov{outline:2px solid var(--opus);outline-offset:3px}
+.cov img,.cov video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;background:#000}
+.cov video{z-index:2}
+.play{position:absolute;left:8px;bottom:8px;z-index:3;display:inline-flex;align-items:center;gap:5px;background:rgba(13,10,8,.82);color:var(--cream);font:600 11px/1 var(--mono);padding:4px 7px}
+.play::before{content:"";border-left:7px solid var(--rec);border-block:4.5px solid transparent}
+.chip{z-index:3;position:absolute;left:8px;top:8px;background:var(--opus);color:var(--ink);font:700 11px/1 var(--sans);letter-spacing:.04em;padding:4px 7px;border:1.5px solid var(--ink)}
+.likes{z-index:3;position:absolute;right:8px;bottom:8px;background:rgba(42,28,19,.86);color:var(--paper);font:400 11px/1 var(--mono);padding:4px 6px}
+/* 字幕卡：没有封面时 */
+.cov{display:grid;place-items:center;padding:18px 16px;background-image:radial-gradient(ellipse at center,#3a281c,var(--ink) 75%);text-align:center}
+.cov::before{content:"";position:absolute;inset:7px;border:1px solid var(--gold-lo);outline:1px solid rgba(212,176,100,.35);outline-offset:-5px;pointer-events:none}
+.cov .it{font:600 15px/1.45 var(--serif);color:var(--cream);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
+.stamp{z-index:3;position:absolute;right:10px;top:10px;transform:rotate(8deg);border:2px solid var(--stamp);color:var(--stamp);background:rgba(239,227,201,.9);font:900 12px/1 var(--cjk);letter-spacing:.2em;padding:5px 4px 5px 8px}
+.card h3{margin:4px 0 0;font:700 16.5px/1.35 var(--serif);letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty}
+.card .meta{margin:0;display:flex;flex-wrap:wrap;gap:4px 10px;font:400 12px/1.3 var(--mono);color:var(--ink-faint)}
+.card .meta .by{color:var(--ink-soft)}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font:600 11px/1 var(--sans);border:1px solid var(--ink-faint);color:var(--ink-soft);padding:3px 6px;border-radius:2px}
+.tag.p{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.more{display:flex;justify-content:center;margin-top:40px}
+.btn-ink{border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:700 14px/1 var(--cjk);letter-spacing:.1em;padding:12px 22px;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.btn-ink:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.empty{grid-column:1/-1;padding:48px 0;text-align:center;font:600 18px/1.6 var(--cjk);color:var(--ink-soft)}
+
+/* 工具表 */
+.tools{margin-top:22px;border-top:1px solid var(--ink)}
+.trow{display:grid;grid-template-columns:minmax(0,1.3fr) 76px minmax(0,2.4fr);gap:4px 20px;padding:14px 2px;border-bottom:1px solid var(--paper-3);align-items:baseline}
+.trow a{font:600 14px/1.35 var(--mono);color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+.trow a:hover{color:var(--opus);text-decoration:underline}
+.trow .st{font:600 13px/1 var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+.trow .ds{font-size:14px;color:var(--ink-soft)}
+.trow .ds em{font-style:normal;font:600 11px/1 var(--sans);border:1px solid var(--ink-faint);padding:2px 5px;margin-right:6px;color:var(--ink)}
+.trow .w{grid-column:3;font:400 11px/1.4 var(--mono);color:var(--ink-faint)}
+
+/* ---------- 片尾 ---------- */
+.credits{background:var(--stage);border-top:2px solid var(--gold-lo);padding-block:56px 72px;color:var(--cream-2)}
+.credits h2{margin:0 0 6px;font:800 13px/1 var(--display);letter-spacing:.34em;color:var(--gold);text-align:center}
+.credits .sub-t{text-align:center;margin:0 auto 32px;font:500 14px/1.7 var(--cjk);max-width:40em}
+.roll{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 40px;margin:0;padding:0;list-style:none}
+.roll li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px dashed var(--line-d)}
+.roll a{font:600 13px/1.4 var(--mono);color:var(--cream);text-decoration:none;overflow-wrap:anywhere}
+.roll a:hover{color:var(--gold-hi)}
+.roll b{font:400 12px/1.4 var(--mono);color:var(--gold);font-variant-numeric:tabular-nums;text-align:right}
+.roll span{grid-column:1/-1;font-size:12.5px;color:var(--cream-3)}
+.notes{margin:40px auto 0;max-width:900px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 32px;font-size:13px;line-height:1.75;color:var(--cream-3);padding:0;list-style:none}
+.notes li::before{content:"✦";color:var(--gold-lo);margin-right:10px}
+.fin{margin-top:40px;text-align:center;font:800 22px/1 var(--display);letter-spacing:.5em;color:var(--gold-lo)}
+
+/* ---------- 放映间弹窗 ---------- */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));background:rgba(6,4,3,.82);backdrop-filter:blur(3px)}
+.proj{width:min(1180px,100%);max-height:100%;display:flex;flex-direction:column;background:var(--stage-2);border:1px solid var(--line-d);border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.proj-top{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid var(--line-d);font:400 12px/1 var(--mono);color:var(--cream-3)}
+.proj-top .tc{font-variant-numeric:tabular-nums}
+.proj-top .sp{flex:1}
+.ib{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--line-d);border-radius:50%;background:var(--stage-3);cursor:pointer;color:var(--cream);font-size:15px}
+.ib:hover{border-color:var(--gold-lo);color:var(--gold-hi)}
+.proj-body{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);overflow:auto;min-height:0}
+.screen{padding:18px;border-right:1px solid var(--line-d);display:flex;flex-direction:column;gap:14px;background:#0a0807}
+.screen .cov{border-color:#000;box-shadow:none}
+.screen .cov .it{font-size:clamp(18px,2.2vw,26px);-webkit-line-clamp:4}
+.screen .cov.has-v{aspect-ratio:auto;padding:0;display:block;background:#000}
+.player{display:block;width:100%;max-height:min(66vh,620px);background:#000}
+.screen .cov.has-v video{position:static;inset:auto;height:auto;aspect-ratio:16/9;object-fit:contain}
+.screen .cov.has-v::before{display:none}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.lk{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-d);background:var(--stage-3);color:var(--cream);text-decoration:none;font:600 13px/1 var(--sans);padding:9px 12px;border-radius:3px}
+.lk.main{background:var(--rec);border-color:var(--rec);color:#1a0703}
+.lk:hover{border-color:var(--gold)}
+.lk.main:hover{filter:brightness(1.08)}
+.info{padding:20px 22px 26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.info .kicker{font:600 12px/1 var(--mono);color:var(--rec);letter-spacing:.08em}
+.info h2{margin:0;font:700 clamp(21px,2.4vw,28px)/1.3 var(--serif);color:var(--cream);text-wrap:balance}
+.info .te{margin:-6px 0 0;font:italic 500 14px/1.5 var(--serif);color:var(--cream-3)}
+.info .desc{margin:0;color:var(--cream-2);font-size:14px;line-height:1.75}
+.warn{border-left:3px solid var(--stamp);padding:6px 10px;background:rgba(179,55,42,.12);font-size:13px;color:var(--cream-2)}
+.slate{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--gold-lo)}
+.slate caption{text-align:left;font:800 11px/1 var(--display);letter-spacing:.3em;color:var(--gold);padding-bottom:8px}
+.slate th{width:74px;text-align:left;font:400 11px/1.4 var(--mono);color:var(--cream-3);padding:8px 10px;border-bottom:1px solid var(--line-d);vertical-align:top;letter-spacing:.06em}
+.slate td{padding:8px 10px;border-bottom:1px solid var(--line-d);color:var(--cream);overflow-wrap:anywhere}
+.slate tr:last-child th,.slate tr:last-child td{border-bottom:0}
+.slate td a{color:var(--gold-hi);text-decoration:none}
+.slate td a:hover{text-decoration:underline}
+.script{border:1px solid var(--line-d);border-radius:4px;background:#0d0b09}
+.script-head{display:flex;align-items:center;gap:6px;padding:8px;border-bottom:1px solid var(--line-d)}
+.st-tab{background:none;border:1px solid transparent;border-radius:3px;padding:6px 10px;font-size:12.5px;color:var(--cream-3);cursor:pointer}
+.st-tab[aria-pressed="true"]{background:var(--stage-3);border-color:var(--line-d);color:var(--cream)}
+.copy{margin-left:auto;background:var(--cream);color:var(--stage);border:0;border-radius:3px;padding:7px 12px;font:600 12.5px/1 var(--sans);cursor:pointer}
+.copy:hover{background:var(--gold-hi)}
+.script ol{margin:0;padding:12px 14px 14px 0;max-height:360px;overflow:auto;list-style:none;counter-reset:ln;font:400 12.5px/1.7 var(--mono);color:var(--cream-2)}
+.script li{counter-increment:ln;display:grid;grid-template-columns:44px 1fr;white-space:pre-wrap;overflow-wrap:anywhere}
+.script li::before{content:counter(ln);text-align:right;padding-right:14px;color:var(--cream-3);opacity:.6;user-select:none}
+.script .src{padding:8px 14px;border-top:1px solid var(--line-d);font:400 11px/1.5 var(--mono);color:var(--cream-3)}
+.noscript{padding:14px;border:1px dashed var(--line-d);border-radius:4px;color:var(--cream-3);font-size:13px}
+details.guide{border:1px solid var(--line-d);border-radius:4px;padding:10px 14px;font-size:13.5px;color:var(--cream-2);line-height:1.75}
+details.guide summary{cursor:pointer;color:var(--cream);font-weight:600}
+details.guide div{white-space:pre-wrap;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--gold-hi);color:var(--stage);font:600 13px/1 var(--sans);padding:10px 16px;border-radius:3px}
+
+@media (max-width:720px){
+  .stage-inner{padding-inline:44px}
+  .stage{padding-block-start:100px}
+  .social{top:44px;right:52px}
+  .social a{width:34px;padding:0;justify-content:center}
+  .social span{display:none}
+  h1 .zh{letter-spacing:.16em;padding-left:.16em}
+  .stat svg{width:20px;height:44px}
+  .count{margin-left:0;width:100%}
+  .bar .wrap{gap:8px}
+  .bar .rec{display:none}
+  .ctl{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none}
+  .ctl::-webkit-scrollbar{display:none}
+  .ctl .sel,.ctl .tog{flex:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+  .card h3{font-size:14.5px}
+  .card .meta{font-size:11px}
+  .chip{font-size:10px;padding:3px 5px;left:5px;top:5px}
+  .likes{display:none}
+  .cov .it{font-size:13px}
+  .play{font-size:10px;left:5px;bottom:5px}
+  .sec-head{grid-template-columns:1fr auto}
+  .sec-head .no{display:none}
+  .sec-head p{grid-column:1/-1}
+  .proj-body{grid-template-columns:1fr}
+  .screen{border-right:0;border-bottom:1px solid var(--line-d)}
+  .trow{grid-template-columns:1fr auto}
+  .trow .ds,.trow .w{grid-column:1/-1}
+  .modal{padding:0}
+  .proj{border-radius:0;height:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .curtain,.rec i{animation:none}
+  .cov{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="stage" id="top">
+  <div class="valance" aria-hidden="true"></div>
+  <div class="curtain l" aria-hidden="true"></div>
+  <div class="curtain r" aria-hidden="true"></div>
+  <nav class="social" aria-label="关注我们">
+    <a href="https://x.com/sciencedegens" target="_blank" rel="noopener" aria-label="在 X 上关注 @sciencedegens"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>@sciencedegens</span></a>
+    <a href="https://github.com/wuxie888/one-shot" target="_blank" rel="noopener" aria-label="GitHub 仓库 wuxie888/one-shot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg><span>GitHub</span></a>
+  </nav>
+  <div class="stage-inner">
+    <p class="eyebrow">Claude Opus 5.5<span class="dot">◆</span>用例大全<span class="dot">◆</span>2026</p>
+    <h1><span class="en">ONE SHOT</span><span class="zh">一镜</span></h1>
+    <p class="rule-gold">NOW SHOWING</p>
+    <p class="slogan">一句提示词 一镜到底</p>
+    <ul class="stats" id="stats"></ul>
+  </div>
+  <div class="floor" aria-hidden="true"></div>
+</header>
+
+<nav class="tabs" aria-label="分类"><div class="wrap" id="tabs"></div></nav>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="rec" aria-hidden="true"><i></i>REC</span>
+    <label class="search" for="q">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="搜作品 作者 工具或提示词" autocomplete="off">
+      <kbd>/</kbd>
+    </label>
+    <div class="ctl">
+      <select id="sort" class="sel" aria-label="排序">
+        <option value="likes">最多赞</option>
+        <option value="new">最新发布</option>
+        <option value="old">最早发布</option>
+        <option value="src">被收录最多</option>
+      </select>
+      <label class="tog" for="fp"><input id="fp" type="checkbox">有提示词</label>
+      <label class="tog" for="fc"><input id="fc" type="checkbox">有封面</label>
+      <label class="tog" for="fu"><input id="fu" type="checkbox">含待核实</label>
+    </div>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+</div>
+
+<main class="paper">
+  <div class="wrap">
+    <header class="sec-head" id="secHead"></header>
+    <div class="subs" id="subs"></div>
+    <div class="grid" id="grid"></div>
+    <div class="tools" id="tools" hidden></div>
+    <div class="more"><button class="btn-ink" id="more" type="button" hidden>继续放映</button></div>
+  </div>
+</main>
+
+<footer class="credits">
+  <div class="wrap">
+    <h2>CREDITS · 片源</h2>
+    <p class="sub-t" id="creditLede"></p>
+    <ul class="roll" id="roll"></ul>
+    <ul class="notes">
+      <li>同一条帖子只收一次</li>
+      <li>提示词优先取逐字原文</li>
+      <li>模型归属以作者自述为准</li>
+      <li>待核实作品来自 athemeroy 分类器语料</li>
+    </ul>
+    <p class="fin">FIN</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="proj" id="proj"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script type="application/json" id="data">/*DATA*/</script>
+<script>
+(function(){
+const DB = JSON.parse(document.getElementById('data').textContent);
+const ALL = DB.cases, TOOLS = DB.tools, META = DB.meta;
+const CATS = [
+  ['all','全部','全部作品 同一条帖子只出现一次'],
+  ['video','视频与动画','发布片 动效 讲解 短片 MV 全部用代码逐帧画出来'],
+  ['game','游戏','能玩的游戏和游戏录屏 不少附了在线试玩'],
+  ['scene','3D 场景与交互','实时运行的 3D 场景 模拟和交互装置'],
+  ['web','网页、UI 与 SVG','网页 界面 SVG 和 Lottie 动画'],
+  ['agent','Agent 与编程','Agent 长任务 编程工具和研究实验'],
+  ['eval','评测与模型对比','同题对比 基准测试 还有鹈鹕骑自行车'],
+  ['resource','官方、合集与资源','官方发布 其他合集和讨论帖'],
+  ['tools','工具与源码','作品源码 做视频的 skill 和通用工具 按 GitHub 星数排序']
+];
+const CATNAME = Object.fromEntries(CATS.map(c=>[c[0],c[1]]));
+const SUBS = [['launch','产品发布与广告'],['motion','动效与作品集'],['explainer','知识讲解'],['story','叙事与角色动画'],['music','音乐视频'],['history','历史与纪录'],['remix','素材改编与剪辑'],['self','AI 自我叙事'],['other','其他']];
+const SUBNAME = Object.fromEntries(SUBS);
+const REPOS = [
+  ['Li-Evan','Li-Evan/awesome-opus-5.5-video-prompts','334 条逐字提示词'],
+  ['coolbat','coolbat/awesome-opus-5.5-usecase','游戏、3D、影片、agent 综合用例'],
+  ['yihui-dev','yihui-dev/awesome-opus5-5-videos','282 条热门视频，带提示词'],
+  ['athemeroy（人工深读）','athemeroy/awesome-opus-5-5-videos','1,401 个视频语料和 168 条人工深读'],
+  ['krillinai','krillinai/awesome-opus-animation','动画、3D 场景和可玩项目'],
+  ['frontier-games','theolundqvist/frontier-games','游戏和影片，这里只取 Opus 5.5 的'],
+  ['OpenVGLab','OpenVGLab/awesome-opus5.5-frontend-showcases','SVG、Lottie、Three.js 和鹈鹕测试'],
+  ['joeseesun','joeseesun/opus-video-prompts','54 个案例的中文提示词'],
+  ['opusvideo','opusvideo/awesome-claude-video','53 条高浏览量精选和实现指南'],
+  ['lemo-opuscar','lemomo-ai/lemo-opuscar','作者自制的 39 种风格样片'],
+  ['zhuyansen','zhuyansen/awesome-claude-video-skills','180 个做视频的 skill 和工具'],
+  ['riba2534','riba2534/claude-opus-5-5-demo','作者自制的演示项目']
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => n == null ? '' : n >= 10000 ? (n/10000).toFixed(n >= 100000 ? 0 : 1).replace(/\.0$/,'') + '万' : n.toLocaleString('en-US');
+const isX = u => /^https:\/\/x\.com\/[^/]+\/status\//.test(u);
+ALL.forEach((c,i) => {
+  c.i = i;
+  c.h = [c.t, c.te, c.a, c.ds, (c.tl||[]).join(' '), c.p, c.pz].filter(Boolean).join(' ').toLowerCase();
+  c.n = c.src.filter(s => !s.includes('分类器')).length;
+});
+const CUR = ALL.filter(c => c.c !== 0);
+const BYID = new Map(ALL.map(c => [c.id, c]));
+
+const state = {cat:'all', sub:null, q:'', sort:'likes', fp:false, fc:false, fu:false, shown:48};
+try { const s = JSON.parse(localStorage.getItem('opus55-filters') || '{}'); Object.assign(state, {sort:s.sort||'likes', fp:!!s.fp, fc:!!s.fc, fu:!!s.fu}); } catch(e) {}
+const save = () => { try { localStorage.setItem('opus55-filters', JSON.stringify({sort:state.sort, fp:state.fp, fc:state.fc, fu:state.fu})); } catch(e) {} };
+
+// 桂冠
+function laurel(flip){
+  let leaves = '';
+  for (let k = 0; k < 7; k++) {
+    const t = k / 6, a = (-70 + t * 140) * Math.PI / 180;
+    const x = 22 - Math.cos(a) * 14, y = 32 + Math.sin(a) * 26;
+    const rot = (-70 + t * 140) + 60;
+    leaves += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="6.5" ry="2.6" transform="rotate(${rot.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="url(#lg)"/>`;
+  }
+  return `<svg viewBox="0 0 30 64" aria-hidden="true" style="${flip?'transform:scaleX(-1)':''}"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#f6e0a0"/><stop offset="1" stop-color="#7d5f28"/></linearGradient></defs><path d="M24 4 Q8 32 24 60" fill="none" stroke="#7d5f28" stroke-width="1.2"/>${leaves}</svg>`;
+}
+const withPrompt = CUR.filter(c => c.p && (c.pk === '原文' || c.pk === '部分原文')).length;
+$('#stats').innerHTML = [[CUR.length,'部作品'],[withPrompt,'份原文提示词'],[12,'个片源']].map(([n,l]) =>
+  `<li class="stat"><div class="wreath">${laurel(false)}<b>${n.toLocaleString('en-US')}</b>${laurel(true)}</div><span>${l}</span></li>`).join('');
+
+function catCount(k){ return k === 'tools' ? TOOLS.length : k === 'all' ? CUR.length : CUR.filter(c => c.k === k).length; }
+$('#tabs').innerHTML = CATS.map(([k,n]) => `<button class="tab" type="button" data-cat="${k}" aria-pressed="false">${n}<small>${catCount(k)}</small></button>`).join('');
+
+function list(){
+  let xs = state.fu ? ALL : CUR;
+  if (state.cat !== 'all') xs = xs.filter(c => c.k === state.cat);
+  if (state.cat === 'video' && state.sub) xs = xs.filter(c => c.s === state.sub);
+  if (state.fp) xs = xs.filter(c => c.p);
+  if (state.fc) xs = xs.filter(c => c.th);
+  if (state.q) { const ws = state.q.toLowerCase().split(/\s+/).filter(Boolean); xs = xs.filter(c => ws.every(w => c.h.includes(w))); }
+  const d = c => c.d || '';
+  const cmp = {
+    likes: (a,b) => (b.l||0)-(a.l||0) || (b.v||0)-(a.v||0) || (b.c===0)-(a.c===0) || b.n-a.n || d(b).localeCompare(d(a)),
+    new: (a,b) => d(b).localeCompare(d(a)) || (b.l||0)-(a.l||0),
+    old: (a,b) => (d(a)||'9').localeCompare(d(b)||'9') || (b.l||0)-(a.l||0),
+    src: (a,b) => b.n-a.n || (b.l||0)-(a.l||0)
+  }[state.sort];
+  return xs.slice().sort(cmp);
+}
+
+const dur = s => s ? `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}` : '';
+const big = u => u.replace('name=small', 'name=medium');
+function cover(c, large){
+  const img = c.im ? `<img src="${esc(large ? big(c.im) : c.im)}" alt="" loading="${large ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
+  return `<div class="cov"><span class="it">${esc(c.t)}</span>${img}`;
+}
+function card(c){
+  const sub = c.k === 'video' && c.s ? SUBNAME[c.s] : CATNAME[c.k];
+  const date = c.d ? c.d.slice(5) : '';
+  const tags = [];
+  if (c.p) tags.push(`<span class="tag p">${c.pk === '原文' || c.pk === '部分原文' ? '提示词原文' : '提示词' + esc(c.pk)}</span>`);
+  if (c.dm) tags.push('<span class="tag">可试玩</span>');
+  if (c.rp) tags.push('<span class="tag">有源码</span>');
+  if (c.n > 1) tags.push(`<span class="tag">${c.n} 处收录</span>`);
+  return `<a class="card" href="#c${esc(c.id.replace(/[^A-Za-z0-9_-]/g,''))}" data-i="${c.i}"${c.vs ? ' data-v="1"' : ''}>
+    ${cover(c)}<span class="chip">${esc(sub)}</span>${c.vs ? `<span class="play">${dur(c.du) || '播放'}</span>` : ''}${c.l ? `<span class="likes">♥ ${fmt(c.l)}</span>` : ''}${c.c === 0 ? '<span class="stamp">待核实</span>' : ''}</div>
+    <h3>${esc(c.t)}</h3>
+    <p class="meta"><span class="by">${c.a ? (isX(c.u) ? '@' : '') + esc(c.a) : '—'}</span><span>${date}</span></p>
+    <div class="tags">${tags.join('')}</div></a>`;
+}
+
+let current = [];
+function render(keep){
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cat === state.cat)));
+  const cat = CATS.find(c => c[0] === state.cat);
+  const idx = CATS.indexOf(cat);
+  const isTools = state.cat === 'tools';
+  $('#grid').hidden = isTools; $('#tools').hidden = !isTools;
+  document.querySelectorAll('.ctl .tog, #sort').forEach(el => el.style.visibility = isTools ? 'hidden' : '');
+  if (isTools) {
+    const q = state.q.toLowerCase();
+    const ts = TOOLS.filter(t => !q || (t.r + ' ' + t.ds + ' ' + t.kd).toLowerCase().includes(q));
+    $('#secHead').innerHTML = `<span class="no mono">No.${String(idx).padStart(2,'0')}</span><h2>${cat[1]}</h2><span class="n">${ts.length}</span><p>${cat[2]}</p>`;
+    $('#subs').innerHTML = '';
+    $('#tools').innerHTML = ts.map(t => `<div class="trow"><a href="https://github.com/${esc(t.r)}" target="_blank" rel="noopener">${esc(t.r)}</a><span class="st">${t.st != null ? '★ ' + fmt(t.st) : ''}</span><span class="ds">${t.kd ? `<em>${esc(t.kd)}</em>` : ''}${esc(t.ds)}</span><span class="w">出现在 ${esc(t.w)}</span></div>`).join('') || '<p class="empty">没有匹配的仓库</p>';
+    $('#count').innerHTML = `<b>${ts.length}</b> / ${TOOLS.length} 个仓库`;
+    $('#more').hidden = true;
+    return;
+  }
+  current = list();
+  if (!keep) state.shown = 48;
+  const catTotal = (state.fu ? ALL : CUR).filter(c => state.cat === 'all' || c.k === state.cat);
+  $('#secHead').innerHTML = `<span class="no mono">No.${String(idx).padStart(2,'0')}</span><h2>${cat[1]}${state.sub ? ' · ' + SUBNAME[state.sub] : ''}</h2><span class="n">${current.length}</span><p>${cat[2]}</p>`;
+  if (state.cat === 'video') {
+    const cnt = {}; catTotal.forEach(c => cnt[c.s] = (cnt[c.s]||0) + 1);
+    $('#subs').innerHTML = `<button class="sub" type="button" data-sub="" aria-pressed="${!state.sub}">全部<small>${catTotal.length}</small></button>` +
+      SUBS.filter(([k]) => cnt[k]).map(([k,n]) => `<button class="sub" type="button" data-sub="${k}" aria-pressed="${state.sub===k}">${n}<small>${cnt[k]}</small></button>`).join('');
+  } else $('#subs').innerHTML = '';
+  const slice = current.slice(0, state.shown);
+  $('#grid').innerHTML = slice.length ? slice.map(card).join('') : '<p class="empty">没有找到 换个关键词试试</p>';
+  const left = current.length - slice.length;
+  $('#more').hidden = left <= 0;
+  $('#more').textContent = `继续放映 还有 ${left} 部`;
+  $('#count').innerHTML = `显示 <b>${slice.length}</b> / ${current.length} 部`;
+}
+
+// 事件
+$('#tabs').addEventListener('click', e => {
+  const b = e.target.closest('.tab'); if (!b) return;
+  state.cat = b.dataset.cat; state.sub = null; render();
+  history.replaceState(null, '', state.cat === 'all' ? location.pathname + location.search : '#' + state.cat);
+  document.querySelector('.bar').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+$('#subs').addEventListener('click', e => { const b = e.target.closest('.sub'); if (!b) return; state.sub = b.dataset.sub || null; render(); });
+let qt; $('#q').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { state.q = e.target.value.trim(); render(); }, 140); });
+$('#sort').addEventListener('change', e => { state.sort = e.target.value; save(); render(); });
+['fp','fc','fu'].forEach(k => $('#' + k).addEventListener('change', e => { state[k] = e.target.checked; save(); render(); }));
+$('#more').addEventListener('click', () => { state.shown += 96; render(true); });
+if ('IntersectionObserver' in window) new IntersectionObserver(es => { if (es[0].isIntersecting && !$('#more').hidden && state.shown < 480) { state.shown += 48; render(true); } }, {rootMargin:'600px'}).observe($('#more'));
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && $('#modal').hidden) { e.preventDefault(); $('#q').focus(); }
+});
+
+// 卡片悬停：静音播放预览
+if (matchMedia('(hover: hover)').matches) {
+  const grid = $('#grid');
+  grid.addEventListener('mouseover', e => {
+    const a = e.target.closest('.card[data-v]'); if (!a || a.contains(e.relatedTarget) || a.querySelector('video')) return;
+    const c = ALL[+a.dataset.i];
+    const v = document.createElement('video');
+    Object.assign(v, {muted:true, loop:true, playsInline:true, autoplay:true, preload:'auto', src:c.vs});
+    v.setAttribute('referrerpolicy','no-referrer');
+    v.addEventListener('error', () => v.remove());
+    a.querySelector('.cov').appendChild(v);
+    v.play().catch(() => {});
+  });
+  grid.addEventListener('mouseout', e => {
+    const a = e.target.closest('.card[data-v]'); if (!a || a.contains(e.relatedTarget)) return;
+    const v = a.querySelector('.cov video'); if (v) { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); }
+  });
+}
+
+// 放映间
+let openIdx = -1, lastFocus = null;
+function openCase(c){
+  lastFocus = lastFocus || document.activeElement;
+  openIdx = current.indexOf(c);
+  const pos = openIdx >= 0 ? `片号 ${String(openIdx + 1).padStart(4,'0')} / ${String(current.length).padStart(4,'0')}` : '片号 ----';
+  const sub = c.k === 'video' && c.s ? `${CATNAME[c.k]} / ${SUBNAME[c.s]}` : CATNAME[c.k];
+  const links = [`<a class="lk main" href="${esc(c.u)}" target="_blank" rel="noopener">${isX(c.u) ? '看原帖' : '打开链接'} ↗</a>`];
+  (c.dm || []).slice(0,3).forEach((u,i) => links.push(`<a class="lk" href="${esc(u)}" target="_blank" rel="noopener">在线体验${c.dm.length > 1 ? ' ' + (i+1) : ''} ↗</a>`));
+  (c.rp || []).slice(0,3).forEach(u => links.push(`<a class="lk" href="${esc(u)}" target="_blank" rel="noopener">源码 ↗</a>`));
+  const rows = [];
+  if (c.a) rows.push(['作者', isX(c.u) ? `<a href="https://x.com/${esc(c.a)}" target="_blank" rel="noopener">@${esc(c.a)}</a>` : esc(c.a)]);
+  if (c.d) rows.push(['发布', `${esc(c.d)} <span style="color:var(--cream-3)">UTC</span>`]);
+  if (c.l || c.v) rows.push(['热度', [c.l ? `赞 ${fmt(c.l)}` : '', c.v ? `浏览 ${fmt(c.v)}` : ''].filter(Boolean).join(' · ')]);
+  if (c.tl) rows.push(['工具', esc(c.tl.join('、'))]);
+  rows.push(['收录于', esc(c.src.join('、'))]);
+  if (c.cl) rows.push(['分类器', c.cl === 'yes' ? '判定与 Opus 有关' : '判定可能与 Opus 有关']);
+  const hasZh = c.pz && c.pz !== c.p;
+  const promptBlock = c.p ? `<div class="script">
+      <div class="script-head">
+        <button class="st-tab" type="button" data-v="p" aria-pressed="true">${c.pk === '原文' || c.pk === '部分原文' ? '原文' : esc(c.pk)}</button>
+        ${hasZh ? '<button class="st-tab" type="button" data-v="pz" aria-pressed="false">中文译文</button>' : ''}
+        <button class="copy" type="button" id="copyBtn">复制提示词</button>
+      </div>
+      <ol id="scriptBody">${lines(c.p)}</ol>
+      <div class="src">${esc(c.pk)} · 来自 ${esc(c.ps)} · ${c.p.length.toLocaleString('en-US')} 字符</div>
+    </div>` : '<p class="noscript">作者没有公开提示词</p>';
+  $('#proj').innerHTML = `
+    <div class="proj-top"><span class="rec"><i></i>REC</span><span class="tc">${pos}</span><span class="sp"></span>
+      <button class="ib" type="button" id="prevB" aria-label="上一部">‹</button><button class="ib" type="button" id="nextB" aria-label="下一部">›</button><button class="ib" type="button" id="closeB" aria-label="关闭">✕</button></div>
+    <div class="proj-body">
+      <div class="screen">${c.vh ? `<div class="cov has-v"><video class="player" id="player" controls autoplay playsinline preload="auto" referrerpolicy="no-referrer" ${c.im ? `poster="${esc(big(c.im))}"` : ''} src="${esc(c.vh)}"></video>` : cover(c, true)}${c.c === 0 ? '<span class="stamp">待核实</span>' : ''}</div><div class="links">${links.join('')}</div></div>
+      <div class="info">
+        <span class="kicker">${esc(sub)}</span>
+        <h2 id="mTitle">${esc(c.t)}</h2>
+        ${c.te ? `<p class="te">${esc(c.te)}</p>` : ''}
+        ${c.br ? '<p class="warn">发帖早于 Opus 5.5 发布日 模型归属存疑</p>' : ''}
+        ${c.ds ? `<p class="desc">${esc(c.ds)}</p>` : ''}
+        <table class="slate"><caption>场记单</caption>${rows.map(([k,v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join('')}</table>
+        ${promptBlock}
+        ${c.g ? `<details class="guide"><summary>实现步骤</summary><div>${esc(c.g)}</div></details>` : ''}
+      </div>
+    </div>`;
+  $('#modal').hidden = false;
+  document.body.style.overflow = 'hidden';
+  const pl = $('#player');
+  if (pl) {
+    pl.addEventListener('error', () => { if (c.vs && pl.src !== c.vs) pl.src = c.vs; }, {once:true});
+    const pr = pl.play(); if (pr) pr.catch(() => { pl.muted = true; pl.play().catch(() => {}); });
+  }
+  $('#closeB').focus();
+  $('#prevB').disabled = openIdx <= 0; $('#nextB').disabled = openIdx < 0 || openIdx >= current.length - 1;
+  let view = 'p';
+  $('#proj').querySelectorAll('.st-tab').forEach(b => b.addEventListener('click', () => {
+    view = b.dataset.v; $('#proj').querySelectorAll('.st-tab').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    $('#scriptBody').innerHTML = lines(c[view]);
+  }));
+  const cb = $('#copyBtn');
+  if (cb) cb.addEventListener('click', () => {
+    const text = c[view];
+    const done = () => toast('提示词已复制');
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents($('#scriptBody')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('已选中全文 按 ⌘C 复制'); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch(e) { fallback(); }
+  });
+}
+function lines(t){ return String(t || '').split('\n').map(l => `<li>${esc(l) || ' '}</li>`).join(''); }
+function closeCase(){
+  $('#modal').hidden = true; $('#proj').innerHTML = ''; document.body.style.overflow = ''; openIdx = -1;
+  if (location.hash.startsWith('#c')) history.replaceState(null, '', state.cat === 'all' ? location.pathname + location.search : '#' + state.cat);
+  if (lastFocus && lastFocus.focus) lastFocus.focus(); lastFocus = null;
+}
+function step(d){
+  const c = current[openIdx + d]; if (!c) return;
+  history.replaceState(null, '', '#c' + c.id.replace(/[^A-Za-z0-9_-]/g,''));
+  openCase(c);
+}
+$('#grid').addEventListener('click', e => {
+  const a = e.target.closest('.card'); if (!a) return;
+  e.preventDefault(); lastFocus = a;
+  history.replaceState(null, '', a.getAttribute('href'));
+  openCase(ALL[+a.dataset.i]);
+});
+$('#modal').addEventListener('click', e => {
+  if (e.target === $('#modal') || e.target.closest('#closeB')) closeCase();
+  else if (e.target.closest('#prevB')) step(-1);
+  else if (e.target.closest('#nextB')) step(1);
+});
+document.addEventListener('keydown', e => {
+  if ($('#modal').hidden) return;
+  if (e.key === 'Escape') closeCase();
+  else if (e.key === 'ArrowLeft' && e.target.tagName !== 'INPUT') step(-1);
+  else if (e.key === 'ArrowRight' && e.target.tagName !== 'INPUT') step(1);
+});
+let tt; function toast(m){ const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 1800); }
+
+// 片尾
+const cnt = {}; CUR.forEach(c => c.src.forEach(s => cnt[s] = (cnt[s]||0) + 1));
+$('#creditLede').textContent = `片单数据截至 ${META.data_until}  互动数更新于 ${META.updated}`;
+$('#roll').innerHTML = REPOS.map(([k,full,d]) => `<li><a href="https://github.com/${full}" target="_blank" rel="noopener">${full}</a><b>${cnt[k] ? cnt[k] + ' 部' : '—'}</b><span>${d}</span></li>`).join('');
+
+// 初始状态
+$('#sort').value = state.sort; $('#fp').checked = state.fp; $('#fc').checked = state.fc; $('#fu').checked = state.fu;
+const h = location.hash.slice(1);
+if (CATNAME[h]) state.cat = h;
+render();
+if (h.startsWith('c')) { const c = ALL.find(x => x.id.replace(/[^A-Za-z0-9_-]/g,'') === h.slice(1)); if (c) openCase(c); }
+})();
+</script>
+</body>
+</html>

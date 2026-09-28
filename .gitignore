@@ -1,0 +1,13 @@
+# Source repositories (fetched by scripts/build.py --fetch)
+sources/
+# Caches
+data/fx/
+web/_thumbs800/
+__pycache__/
+# Build artifacts
+*.zip
+# Vercel
+.vercel/
+# macOS
+.DS_Store
+._*

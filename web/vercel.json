@@ -1,0 +1,11 @@
+{
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "Referrer-Policy", "value": "no-referrer" },
+      { "key": "X-Content-Type-Options", "value": "nosniff" }
+    ] },
+    { "source": "/img/(.*)", "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=604800, immutable" }
+    ] }
+  ]
+}
